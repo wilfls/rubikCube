@@ -1,11 +1,60 @@
 Circles up, right, left;
 
-
 void setup() {
   size(800, 800);
   up = new Circles(400, 311.4359, 300, 375, 450);
   right = new Circles(480, 450, 300, 375, 450);
   left = new Circles(320, 450, 300, 375, 450);
+
+  faceA[0] = faceA_0;
+  faceA[1] = faceA_1;
+  faceA[2] = faceA_2;
+  faceA[3] = faceA_3;
+  faceA[4] = faceA_4;
+  faceA[5] = faceA_5;
+  faceA[6] = faceA_6;
+  faceA[7] = faceA_7;
+  faceA[8] = faceA_8;
+  
+  faceB[0] = faceB_0;
+  faceB[1] = faceB_1;
+  faceB[2] = faceB_2;
+  faceB[3] = faceB_3;
+  faceB[4] = faceB_4;
+  faceB[5] = faceB_5;
+  faceB[6] = faceB_6;
+  faceB[7] = faceB_7;
+  faceB[8] = faceB_8;
+  
+  faceD[0] = faceD_0;
+  faceD[1] = faceD_1;
+  faceD[2] = faceD_2;
+  faceD[3] = faceD_3;
+  faceD[4] = faceD_4;
+  faceD[5] = faceD_5;
+  faceD[6] = faceD_6;
+  faceD[7] = faceD_7;
+  faceD[8] = faceD_8;
+  
+  faceE[0] = faceE_0;
+  faceE[1] = faceE_1;
+  faceE[2] = faceE_2;
+  faceE[3] = faceE_3;
+  faceE[4] = faceE_4;
+  faceE[5] = faceE_5;
+  faceE[6] = faceE_6;
+  faceE[7] = faceE_7;
+  faceE[8] = faceE_8;
+  
+  faceF[0] = faceF_0;
+  faceF[1] = faceF_1;
+  faceF[2] = faceF_2;
+  faceF[3] = faceF_3;
+  faceF[4] = faceF_4;
+  faceF[5] = faceF_5;
+  faceF[6] = faceF_6;
+  faceF[7] = faceF_7;
+  faceF[8] = faceF_8;
 
   //internal left circle position and color
   left.CreateInternalBalls(3.62);
@@ -91,7 +140,14 @@ void draw() {
   up.display();
   right.display();
   left.display();
-  //  circle(400, 450, 10);
+  fill(250, 250, 250);
+  for (int i = 0; i < faceF.length; i++){
+      circle(faceF[i].x, faceF[i].y, 10);
+
+  }
+ // circle(faceA_0.x, faceA_0.y, 10);
+  //circle(549.88630, 317.27507, 10);
+
 
   fill(0, 0, 250, 150);
   // circle(400, 290, 10);
@@ -264,5 +320,15 @@ class Ball {
      }else if (r==20){
      velocity-=0.00003;
      }*/
+  }
+}
+
+class Point {
+  float x;
+  float y;
+
+  Point(float xvar, float yvar) {
+    x= xvar;
+    y= yvar;
   }
 }

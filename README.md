@@ -45,8 +45,8 @@ up internal + left middle
 x= 254.68383, y= 274.24435
 x= 504.86693, y= 418.68759
 
-up internal + left external
-x= 274.22133, y= 299.70630
+up internal + left external 
+x= 274.22133, y= 229.70630
 x= 533.66925, y= 379.49859
 
 up middle + left internal
@@ -62,7 +62,7 @@ x= 224.12174, y= 246.45059
 x= 544.21807, y= 431.25825
 
 up external + left internal
-x= 180.33074, y= 381.93730
+x= 186.33074, y= 381.93730
 x= 445.77866, y= 531.72959
 
 up external + left middle
