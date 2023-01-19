@@ -1,4 +1,10 @@
 Circles up, right, left;
+final color cyan = color(0, 250, 250);
+final color magenta = color(250, 0, 250);
+final color gold = color(241, 196, 15);
+final color emerald = color(88, 214, 141);
+final color orange = color(211, 84, 0);
+final color ice = color(163, 160, 239);
 
 void setup() {
   size(800, 800);
@@ -8,82 +14,81 @@ void setup() {
 
   //internal left circle position and color
   left.CreateInternalBalls(3.62);
-  left.ballsInternal[9].setColor(color(0, 250, 250));
-  left.ballsInternal[10].setColor(color(0, 250, 250));
-  left.ballsInternal[11].setColor(color(0, 250, 250));
+  left.ballsInternal[9].setColor(cyan);
+  left.ballsInternal[10].setColor(cyan);
+  left.ballsInternal[11].setColor(cyan);
 
-  left.ballsInternal[0].setColor(color(250, 0, 250));
-  left.ballsInternal[1].setColor(color(250, 0, 250));
-  left.ballsInternal[2].setColor(color(250, 0, 250));
+  left.ballsInternal[0].setColor(magenta);
+  left.ballsInternal[1].setColor(magenta);
+  left.ballsInternal[2].setColor(magenta);
 
-  left.ballsInternal[3].setColor(color(241, 196, 15));
-  left.ballsInternal[4].setColor(color(241, 196, 15));
-  left.ballsInternal[5].setColor(color( 241, 196, 15 ));
+  left.ballsInternal[3].setColor(gold);
+  left.ballsInternal[4].setColor(gold);
+  left.ballsInternal[5].setColor(gold);
 
-  left.ballsInternal[6].setColor(color( 88, 214, 141 ));
-  left.ballsInternal[7].setColor(color( 88, 214, 141 ));
-  left.ballsInternal[8].setColor(color(  88, 214, 141 ));
+  left.ballsInternal[6].setColor(emerald);
+  left.ballsInternal[7].setColor(emerald);
+  left.ballsInternal[8].setColor(emerald);
 
   //middle left circle position and color
   left.CreateMiddleBalls(3.84);
-  left.ballsMiddle[9].setColor(color(0, 250, 250));
-  left.ballsMiddle[10].setColor(color(0, 250, 250));
-  left.ballsMiddle[11].setColor(color(0, 250, 250));
+  left.ballsMiddle[9].setColor(cyan);
+  left.ballsMiddle[10].setColor(cyan);
+  left.ballsMiddle[11].setColor(cyan);
 
-  left.ballsMiddle[0].setColor(color(250, 0, 250));
-  left.ballsMiddle[1].setColor(color(250, 0, 250));
-  left.ballsMiddle[2].setColor(color(250, 0, 250));
+  left.ballsMiddle[0].setColor(magenta);
+  left.ballsMiddle[1].setColor(magenta);
+  left.ballsMiddle[2].setColor(magenta);
 
-  left.ballsMiddle[3].setColor(color(241, 196, 15));
-  left.ballsMiddle[4].setColor(color(241, 196, 15));
-  left.ballsMiddle[5].setColor(color( 241, 196, 15 ));
+  left.ballsMiddle[3].setColor(gold);
+  left.ballsMiddle[4].setColor(gold);
+  left.ballsMiddle[5].setColor(gold);
 
-  left.ballsMiddle[6].setColor(color( 88, 214, 141 ));
-  left.ballsMiddle[7].setColor(color( 88, 214, 141 ));
-  left.ballsMiddle[8].setColor(color(  88, 214, 141 ));
+  left.ballsMiddle[6].setColor(emerald);
+  left.ballsMiddle[7].setColor(emerald);
+  left.ballsMiddle[8].setColor(emerald);
 
   //external left circle position and color
   left.CreateExternalBalls(4.03);
-  left.ballsExternal[9].setColor(color(0, 250, 250));
-  left.ballsExternal[10].setColor(color(0, 250, 250));
-  left.ballsExternal[11].setColor(color(0, 250, 250));
+  left.ballsExternal[9].setColor(cyan);
+  left.ballsExternal[10].setColor(cyan);
+  left.ballsExternal[11].setColor(cyan);
 
-  left.ballsExternal[0].setColor(color(250, 0, 250));
-  left.ballsExternal[1].setColor(color(250, 0, 250));
-  left.ballsExternal[2].setColor(color(250, 0, 250));
+  left.ballsExternal[0].setColor(magenta);
+  left.ballsExternal[1].setColor(magenta);
+  left.ballsExternal[2].setColor(magenta);
 
-  left.ballsExternal[3].setColor(color(241, 196, 15));
-  left.ballsExternal[4].setColor(color(241, 196, 15));
-  left.ballsExternal[5].setColor(color( 241, 196, 15 ));
+  left.ballsExternal[3].setColor(gold);
+  left.ballsExternal[4].setColor(gold);
+  left.ballsExternal[5].setColor(gold);
 
-  left.ballsExternal[6].setColor(color( 88, 214, 141 ));
-  left.ballsExternal[7].setColor(color( 88, 214, 141 ));
-  left.ballsExternal[8].setColor(color(  88, 214, 141 ));
+  left.ballsExternal[6].setColor(emerald);
+  left.ballsExternal[7].setColor(emerald);
+  left.ballsExternal[8].setColor(emerald);
 
   right.CreateInternalBalls(1.52);
-  right.ballsInternal[0].setColor(color(0, 250, 250));
-  right.ballsInternal[1].setColor(color(0, 250, 250));
-  right.ballsInternal[2].setColor(color(0, 250, 250));
+  right.ballsInternal[0].setColor(cyan);
+  right.ballsInternal[1].setColor(cyan);
+  right.ballsInternal[2].setColor(cyan);
 
-  right.ballsInternal[9].setColor(color( 211, 84, 0 ));
-  right.ballsInternal[10].setColor(color( 211, 84, 0 ));
-  right.ballsInternal[11].setColor(color( 211, 84, 0 ));
+  right.ballsInternal[9].setColor(orange);
+  right.ballsInternal[10].setColor(orange);
+  right.ballsInternal[11].setColor(orange);
 
-  right.ballsInternal[6].setColor(color(241, 196, 15));
-  right.ballsInternal[7].setColor(color(241, 196, 15));
-  right.ballsInternal[8].setColor(color( 241, 196, 15 ));
+  right.ballsInternal[6].setColor(gold);
+  right.ballsInternal[7].setColor(gold);
+  right.ballsInternal[8].setColor(gold);
 
-  right.ballsInternal[3].setColor(color(  163, 160, 239  ));
-  right.ballsInternal[4].setColor(color(  163, 160, 239 ));
-  right.ballsInternal[5].setColor(color(   163, 160, 239 ));
+  right.ballsInternal[3].setColor(ice);
+  right.ballsInternal[4].setColor(ice);
+  right.ballsInternal[5].setColor(ice);
   right.CreateMiddleBalls(3.6);
-    right.CreateExternalBalls(3.6);
+  right.CreateExternalBalls(3.6);
 
 
   up.CreateInternalBalls(5.73);
   up.CreateMiddleBalls(3.6);
-    up.CreateExternalBalls(3.6);
-
+  up.CreateExternalBalls(3.6);
 }
 
 void draw() {
@@ -257,12 +262,12 @@ class Ball {
 
     fill(c, 150);
     circle(x, y, 12);
-   /* angle+=velocity;
-    int r = int(random(0,200));
-    if (r==10){
-      velocity+=0.00007;
-    }else if (r==20){
-      velocity-=0.00003;
-    }*/
+    /* angle+=velocity;
+     int r = int(random(0,200));
+     if (r==10){
+     velocity+=0.00007;
+     }else if (r==20){
+     velocity-=0.00003;
+     }*/
   }
 }
