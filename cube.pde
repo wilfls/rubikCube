@@ -1,4 +1,5 @@
 Circles up, right, left;
+Ball balls[];
 
 void setup() {
   size(800, 800);
@@ -25,6 +26,16 @@ void setup() {
   faceB[6] = faceB_6;
   faceB[7] = faceB_7;
   faceB[8] = faceB_8;
+
+  faceC[0] = faceC_0;
+  faceC[1] = faceC_1;
+  faceC[2] = faceC_2;
+  faceC[3] = faceC_3;
+  faceC[4] = faceC_4;
+  faceC[5] = faceC_5;
+  faceC[6] = faceC_6;
+  faceC[7] = faceC_7;
+  faceC[8] = faceC_8;
 
   faceD[0] = faceD_0;
   faceD[1] = faceD_1;
@@ -56,83 +67,30 @@ void setup() {
   faceF[7] = faceF_7;
   faceF[8] = faceF_8;
 
-  //internal left circle position and color
-  left.CreateInternalBalls(3.62);
-  left.ballsInternal[9].setColor(cyan);
-  left.ballsInternal[10].setColor(cyan);
-  left.ballsInternal[11].setColor(cyan);
+  balls = new Ball[54];
+  for (int i =0; i<9; i++) {
+    balls[i] = new Ball(faceA[i].x, faceA[i].y, emerald);
+  }
 
-  left.ballsInternal[0].setColor(magenta);
-  left.ballsInternal[1].setColor(magenta);
-  left.ballsInternal[2].setColor(magenta);
+  for (int i =0; i<9; i++) {
+    balls[i+9] = new Ball(faceB[i].x, faceB[i].y, ice);
+  }
 
-  left.ballsInternal[3].setColor(gold);
-  left.ballsInternal[4].setColor(gold);
-  left.ballsInternal[5].setColor(gold);
+  for (int i =0; i<9; i++) {
+    balls[i+18] = new Ball(faceC[i].x, faceC[i].y, orange);
+  }
 
-  left.ballsInternal[6].setColor(emerald);
-  left.ballsInternal[7].setColor(emerald);
-  left.ballsInternal[8].setColor(emerald);
+  for (int i =0; i<9; i++) {
+    balls[i+27] = new Ball(faceD[i].x, faceD[i].y, magenta);
+  }
 
-  //middle left circle position and color
-  left.CreateMiddleBalls(3.84);
-  left.ballsMiddle[9].setColor(cyan);
-  left.ballsMiddle[10].setColor(cyan);
-  left.ballsMiddle[11].setColor(cyan);
+  for (int i =0; i<9; i++) {
+    balls[i+36] = new Ball(faceE[i].x, faceE[i].y, cyan);
+  }
 
-  left.ballsMiddle[0].setColor(magenta);
-  left.ballsMiddle[1].setColor(magenta);
-  left.ballsMiddle[2].setColor(magenta);
-
-  left.ballsMiddle[3].setColor(gold);
-  left.ballsMiddle[4].setColor(gold);
-  left.ballsMiddle[5].setColor(gold);
-
-  left.ballsMiddle[6].setColor(emerald);
-  left.ballsMiddle[7].setColor(emerald);
-  left.ballsMiddle[8].setColor(emerald);
-
-  //external left circle position and color
-  left.CreateExternalBalls(4.03);
-  left.ballsExternal[9].setColor(cyan);
-  left.ballsExternal[10].setColor(cyan);
-  left.ballsExternal[11].setColor(cyan);
-
-  left.ballsExternal[0].setColor(magenta);
-  left.ballsExternal[1].setColor(magenta);
-  left.ballsExternal[2].setColor(magenta);
-
-  left.ballsExternal[3].setColor(gold);
-  left.ballsExternal[4].setColor(gold);
-  left.ballsExternal[5].setColor(gold);
-
-  left.ballsExternal[6].setColor(emerald);
-  left.ballsExternal[7].setColor(emerald);
-  left.ballsExternal[8].setColor(emerald);
-
-  right.CreateInternalBalls(1.52);
-  right.ballsInternal[0].setColor(cyan);
-  right.ballsInternal[1].setColor(cyan);
-  right.ballsInternal[2].setColor(cyan);
-
-  right.ballsInternal[9].setColor(orange);
-  right.ballsInternal[10].setColor(orange);
-  right.ballsInternal[11].setColor(orange);
-
-  right.ballsInternal[6].setColor(gold);
-  right.ballsInternal[7].setColor(gold);
-  right.ballsInternal[8].setColor(gold);
-
-  right.ballsInternal[3].setColor(ice);
-  right.ballsInternal[4].setColor(ice);
-  right.ballsInternal[5].setColor(ice);
-  right.CreateMiddleBalls(3.6);
-  right.CreateExternalBalls(3.6);
-
-
-  up.CreateInternalBalls(5.73);
-  up.CreateMiddleBalls(3.6);
-  up.CreateExternalBalls(3.6);
+  for (int i =0; i<9; i++) {
+    balls[i+45] = new Ball(faceF[i].x, faceF[i].y, gold);
+  }
 }
 
 void draw() {
@@ -140,13 +98,9 @@ void draw() {
   up.display();
   right.display();
   left.display();
-  fill(250, 250, 250);
-  for (int i = 0; i < faceF.length; i++) {
-    circle(faceF[i].x, faceF[i].y, 10);
+  for (int i = 0; i< balls.length; i++) {
+    balls[i].display();
   }
-
-
-  fill(0, 0, 250, 150);
 }
 
 class Circles {
@@ -157,11 +111,6 @@ class Circles {
   float middleR;
   float externalR;
 
-  Ball[] ballsInternal;
-  Ball[] ballsMiddle;
-  Ball[] ballsExternal;
-
-
   Circles(float x, float y, float i, float m, float e) {
     centerX = x;
     centerY= y;
@@ -169,71 +118,6 @@ class Circles {
     internalR = i;
     middleR = m;
     externalR = e;
-    ballsInternal = new Ball[12];
-    ballsMiddle = new Ball[12];
-    ballsExternal = new Ball[12];
-    for (int j = 0; j < ballsExternal.length; j++) {
-      ballsExternal[j] = new Ball(x, y, e/2, (j), 0.006);
-    }
-  }
-
-  void CreateInternalBalls(float start) {
-    ballsInternal[6] = new Ball(centerX, centerY, internalR/2, (start), 0.01);
-    ballsInternal[7] = new Ball(centerX, centerY, internalR/2, (start+0.317), 0.01);
-    ballsInternal[8] = new Ball(centerX, centerY, internalR/2, (start+0.613), 0.01);
-    start+=1.05;
-    ballsInternal[9] = new Ball(centerX, centerY, internalR/2, (start), 0.01);
-    ballsInternal[10] = new Ball(centerX, centerY, internalR/2, (start+0.317), 0.01);
-    ballsInternal[11] = new Ball(centerX, centerY, internalR/2, (start+0.613), 0.01);
-    start+=1.567;
-    ballsInternal[0] = new Ball(centerX, centerY, internalR/2, (start), 0.01);
-    ballsInternal[1] = new Ball(centerX, centerY, internalR/2, (start+0.3), 0.01);
-    ballsInternal[2] = new Ball(centerX, centerY, internalR/2, (start+0.617), 0.01);
-    start+=1.05;
-    ballsInternal[3] = new Ball(centerX, centerY, internalR/2, (start), 0.01);
-    ballsInternal[4] = new Ball(centerX, centerY, internalR/2, (start+0.3), 0.01);
-    ballsInternal[5] = new Ball(centerX, centerY, internalR/2, (start+0.617), 0.01);
-  }
-
-  void CreateMiddleBalls(float start) {
-    ballsMiddle[6] = new Ball(centerX, centerY, middleR/2, (start), 0.01);
-    ballsMiddle[7] = new Ball(centerX, centerY, middleR/2, (start+0.26), 0.01);
-    ballsMiddle[8] = new Ball(centerX, centerY, middleR/2, (start+0.52), 0.01);
-    start+=1.04;
-    ballsMiddle[9] = new Ball(centerX, centerY, middleR/2, (start), 0.01);
-    ballsMiddle[10] = new Ball(centerX, centerY, middleR/2, (start+0.26), 0.01);
-    ballsMiddle[11] = new Ball(centerX, centerY, middleR/2, (start+0.52), 0.01);
-    start+=1.22;
-    ballsMiddle[0] = new Ball(centerX, centerY, middleR/2, (start), 0.01);
-    ballsMiddle[1] = new Ball(centerX, centerY, middleR/2, (start+0.26), 0.01);
-    ballsMiddle[2] = new Ball(centerX, centerY, middleR/2, (start+0.52), 0.01);
-    start+=1.07;
-    ballsMiddle[3] = new Ball(centerX, centerY, middleR/2, (start), 0.01);
-    ballsMiddle[4] = new Ball(centerX, centerY, middleR/2, (start+0.26), 0.01);
-    ballsMiddle[5] = new Ball(centerX, centerY, middleR/2, (start+0.52), 0.01);
-  }
-
-  void CreateExternalBalls(float start) {
-    ballsExternal[6] = new Ball(centerX, centerY, externalR/2, (start), 0.01);
-    ballsExternal[7] = new Ball(centerX, centerY, externalR/2, (start+0.24), 0.01);
-    ballsExternal[8] = new Ball(centerX, centerY, externalR/2, (start+0.48), 0.01);
-    start+=1.05;
-    ballsExternal[9] = new Ball(centerX, centerY, externalR/2, (start), 0.01);
-    ballsExternal[10] = new Ball(centerX, centerY, externalR/2, (start+0.24), 0.01);
-    ballsExternal[11] = new Ball(centerX, centerY, externalR/2, (start+0.48), 0.01);
-    start+=0.88;
-    ballsExternal[0] = new Ball(centerX, centerY, externalR/2, (start), 0.01);
-    ballsExternal[1] = new Ball(centerX, centerY, externalR/2, (start+0.24), 0.01);
-    ballsExternal[2] = new Ball(centerX, centerY, externalR/2, (start+0.48), 0.01);
-    start+=1.05;
-    ballsExternal[3] = new Ball(centerX, centerY, externalR/2, (start), 0.01);
-    ballsExternal[4] = new Ball(centerX, centerY, externalR/2, (start+0.24), 0.01);
-    ballsExternal[5] = new Ball(centerX, centerY, externalR/2, (start+0.48), 0.01);
-  }
-
-
-  void ChanceInternalColor(int index, color c) {
-    ballsInternal[index].setColor(c);
   }
 
   void display() {
@@ -242,33 +126,32 @@ class Circles {
     circle(centerX, centerY, internalR);
     circle(centerX, centerY, middleR);
     circle(centerX, centerY, externalR);
-    for (int j = 0; j < ballsInternal.length; j++) {
-      ballsInternal[j].display();
-    }
 
-    for (int j = 0; j < ballsMiddle.length; j++) {
-      ballsMiddle[j].display();
-    }
-
-    for (int j = 0; j < ballsExternal.length; j++) {
-      ballsExternal[j].display();
-    }
 
     strokeWeight(10);
     fill(color(200, 0));
     stroke(200, 50);
-
     if (dist(centerX, centerY, mouseX, mouseY) >= (internalR-thick)/2 && dist(centerX, centerY, mouseX, mouseY) <= (internalR+thick)/2) {
       circle(centerX, centerY, internalR);
-    } 
+      ballLight(centerX, centerY, internalR/2);
+    }
     if (dist(centerX, centerY, mouseX, mouseY) >= (middleR-thick)/2 && dist(centerX, centerY, mouseX, mouseY) <= (middleR+thick)/2) {
       circle(centerX, centerY, middleR);
+      ballLight(centerX, centerY, middleR/2);
     }
     if (dist(centerX, centerY, mouseX, mouseY) >= (externalR-thick)/2 && dist(centerX, centerY, mouseX, mouseY) <= (externalR+thick)/2) {
       circle(centerX, centerY, externalR);
+      ballLight(centerX, centerY, externalR/2);
     }
-
     strokeWeight(1);
+  }
+
+  void ballLight(float x, float y, float r) {
+    for (int i = 0; i< balls.length; i++) {
+      if (dist(x, y, balls[i].xCenter, balls[i].yCenter) >= r-1 && dist(x, y, balls[i].xCenter, balls[i].yCenter) <= r+1){
+        balls[i].glow();
+      }
+    }
   }
 }
 
@@ -280,13 +163,11 @@ class Ball {
   float velocity;
   color c;
 
-  Ball(float xPosition, float yPosition, float r, float a, float v) {
+  Ball(float xPosition, float yPosition, color col) {
     xCenter = xPosition;
     yCenter= yPosition;
-    radius = r;
-    angle = a;
-    velocity = v;
-    c = color(0, 0, 0);
+
+    c = col;
   }
 
   void setColor(color col) {
@@ -299,13 +180,12 @@ class Ball {
 
     fill(c, 150);
     circle(x, y, 12);
-    /* angle+=velocity;
-     int r = int(random(0,200));
-     if (r==10){
-     velocity+=0.00007;
-     }else if (r==20){
-     velocity-=0.00003;
-     }*/
+  }
+
+  void glow() {
+    noStroke();
+    fill(c, 100);
+    circle(xCenter, yCenter, 20);
   }
 }
 
