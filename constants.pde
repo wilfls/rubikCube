@@ -4,6 +4,7 @@ final color gold = color(241, 196, 15);
 final color emerald = color(88, 214, 141);
 final color orange = color(211, 84, 0);
 final color ice = color(163, 160, 239);
+final int thick = 8;
 
 final Point faceA[] = new Point[9];
 //up external + left external

@@ -15,7 +15,7 @@ void setup() {
   faceA[6] = faceA_6;
   faceA[7] = faceA_7;
   faceA[8] = faceA_8;
-  
+
   faceB[0] = faceB_0;
   faceB[1] = faceB_1;
   faceB[2] = faceB_2;
@@ -25,7 +25,7 @@ void setup() {
   faceB[6] = faceB_6;
   faceB[7] = faceB_7;
   faceB[8] = faceB_8;
-  
+
   faceD[0] = faceD_0;
   faceD[1] = faceD_1;
   faceD[2] = faceD_2;
@@ -35,7 +35,7 @@ void setup() {
   faceD[6] = faceD_6;
   faceD[7] = faceD_7;
   faceD[8] = faceD_8;
-  
+
   faceE[0] = faceE_0;
   faceE[1] = faceE_1;
   faceE[2] = faceE_2;
@@ -45,7 +45,7 @@ void setup() {
   faceE[6] = faceE_6;
   faceE[7] = faceE_7;
   faceE[8] = faceE_8;
-  
+
   faceF[0] = faceF_0;
   faceF[1] = faceF_1;
   faceF[2] = faceF_2;
@@ -141,21 +141,12 @@ void draw() {
   right.display();
   left.display();
   fill(250, 250, 250);
-  for (int i = 0; i < faceF.length; i++){
-      circle(faceF[i].x, faceF[i].y, 10);
-
+  for (int i = 0; i < faceF.length; i++) {
+    circle(faceF[i].x, faceF[i].y, 10);
   }
- // circle(faceA_0.x, faceA_0.y, 10);
-  //circle(549.88630, 317.27507, 10);
 
 
   fill(0, 0, 250, 150);
-  // circle(400, 290, 10);
-  //circle(400, 330, 10);
-  // circle(400, 373, 10);
-  // circle(352, 315, 10);
-  // circle(447, 315, 10);
-  // circle(359, 357, 10);
 }
 
 class Circles {
@@ -179,28 +170,7 @@ class Circles {
     middleR = m;
     externalR = e;
     ballsInternal = new Ball[12];
-    /*for (int j = 0; j < ballsInternal.length; j++) {
-     ballsInternal[j] = new Ball(x, y, i/2, (0+0.1*j), 0.01, color(0,0, 250 ));
-     }*/
-    /*  ballsInternal[0] = new Ball(x, y, i/2, (-0.045), 0.01, color(0, 0, 250 ));
-     ballsInternal[1] = new Ball(x, y, i/2, (0.25), 0.01, color(0, 0, 250 ));
-     ballsInternal[2] = new Ball(x, y, i/2, (0.56), 0.01, color(0, 0, 250 ));
-     ballsInternal[3] = new Ball(x, y, i/2, (1), 0.01, color(0, 0, 250 ));
-     ballsInternal[4] = new Ball(x, y, i/2, (1.29), 0.01, color(0, 0, 250 ));
-     ballsInternal[5] = new Ball(x, y, i/2, (1.63), 0.01, color(0, 0, 250 ));
-     ballsInternal[6] = new Ball(x, y, i/2, (3.62), 0.01, color(0, 0, 250 ));
-     ballsInternal[7] = new Ball(x, y, i/2, (3.93), 0.01, color(0, 0, 250 ));
-     ballsInternal[8] = new Ball(x, y, i/2, (4.23), 0.01, color(0, 0, 250 ));
-     ballsInternal[9] = new Ball(x, y, i/2, (4.67), 0.01, color(0, 0, 250 ));
-     ballsInternal[10] = new Ball(x, y, i/2, (4.99), 0.01, color(0, 0, 250 ));
-     ballsInternal[11] = new Ball(x, y, i/2, (5.27), 0.01, color(0, 0, 250 ));*/
-
-
     ballsMiddle = new Ball[12];
-    /*for (int j = 0; j < ballsMiddle.length; j++) {
-     ballsMiddle[j] = new Ball(x, y, m/2, (j), 0.008);
-     }*/
-
     ballsExternal = new Ball[12];
     for (int j = 0; j < ballsExternal.length; j++) {
       ballsExternal[j] = new Ball(x, y, e/2, (j), 0.006);
@@ -283,6 +253,22 @@ class Circles {
     for (int j = 0; j < ballsExternal.length; j++) {
       ballsExternal[j].display();
     }
+
+    strokeWeight(10);
+    fill(color(200, 0));
+    stroke(200, 50);
+
+    if (dist(centerX, centerY, mouseX, mouseY) >= (internalR-thick)/2 && dist(centerX, centerY, mouseX, mouseY) <= (internalR+thick)/2) {
+      circle(centerX, centerY, internalR);
+    } 
+    if (dist(centerX, centerY, mouseX, mouseY) >= (middleR-thick)/2 && dist(centerX, centerY, mouseX, mouseY) <= (middleR+thick)/2) {
+      circle(centerX, centerY, middleR);
+    }
+    if (dist(centerX, centerY, mouseX, mouseY) >= (externalR-thick)/2 && dist(centerX, centerY, mouseX, mouseY) <= (externalR+thick)/2) {
+      circle(centerX, centerY, externalR);
+    }
+
+    strokeWeight(1);
   }
 }
 
