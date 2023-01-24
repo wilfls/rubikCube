@@ -8,9 +8,9 @@ Point endAction;
 
 void setup() {
   size(800, 800);
-  up = new Circles(400, 311.4359, 300, 375, 450);
-  right = new Circles(480, 450, 300, 375, 450);
-  left = new Circles(320, 450, 300, 375, 450);
+  up = new Circles(400, 311.4359, 300, 375, 450, "up");
+  right = new Circles(480, 450, 300, 375, 450, "right");
+  left = new Circles(320, 450, 300, 375, 450, "left");
 
 
   circleOfBalls = new CircleBalls[9];
@@ -98,23 +98,78 @@ void setup() {
   for (int i =0; i<9; i++) {
     balls[i+45] = new Ball(faceF[i].x, faceF[i].y, gold);
   }
-  
-  circleOfBalls[0] = new CircleBalls();
+
+  circleOfBalls[0] = new CircleBalls(450, "up");
+  //emerald
   circleOfBalls[0].includeBall(0, balls[0]);
-  circleOfBalls[0].includeBall(1, balls[1]);
-  circleOfBalls[0].includeBall(2, balls[2]);
-  //circleOfBalls[0].includeBall(3, balls[3]);
-  circleOfBalls[0].includeBall(3, balls[27]);
-  circleOfBalls[0].includeBall(4, balls[28]);
-  circleOfBalls[0].includeBall(5, balls[29]);
-  circleOfBalls[0].includeBall(6, balls[36]);
-  circleOfBalls[0].includeBall(7, balls[37]);
-  circleOfBalls[0].includeBall(8, balls[38]);
-  circleOfBalls[0].includeBall(9, balls[18]);
-  circleOfBalls[0].includeBall(10, balls[19]);
+  circleOfBalls[0].includeBall(1, balls[3]);
+  circleOfBalls[0].includeBall(2, balls[6]);
+  //magenta
+  circleOfBalls[0].includeBall(3, balls[30]);
+  circleOfBalls[0].includeBall(4, balls[33]);
+  circleOfBalls[0].includeBall(5, balls[35]);
+  //cyan
+  circleOfBalls[0].includeBall(6, balls[44]);
+  circleOfBalls[0].includeBall(7, balls[43]);
+  circleOfBalls[0].includeBall(8, balls[41]);
+  //orange
+  circleOfBalls[0].includeBall(9, balls[26]);
+  circleOfBalls[0].includeBall(10, balls[23]);
   circleOfBalls[0].includeBall(11, balls[20]);
+
+  circleOfBalls[1] = new CircleBalls(375, "up");
+  //emerald
+  circleOfBalls[1].includeBall(0, balls[1]);
+  circleOfBalls[1].includeBall(1, balls[4]);
+  circleOfBalls[1].includeBall(2, balls[7]);
+  //magenta
+  circleOfBalls[1].includeBall(3, balls[28]);
+  circleOfBalls[1].includeBall(4, balls[31]);
+  circleOfBalls[1].includeBall(5, balls[34]);
+  //cyan
+  circleOfBalls[1].includeBall(6, balls[42]);
+  circleOfBalls[1].includeBall(7, balls[40]);
+  circleOfBalls[1].includeBall(8, balls[38]);
+  //orange
+  circleOfBalls[1].includeBall(9, balls[25]);
+  circleOfBalls[1].includeBall(10, balls[22]);
+  circleOfBalls[1].includeBall(11, balls[19]);
   
-  //circleOfBalls[0].setBall(0, ball[0];
+  circleOfBalls[2] = new CircleBalls(300,"up");
+  //emerald
+  circleOfBalls[2].includeBall(0, balls[2]);
+  circleOfBalls[2].includeBall(1, balls[5]);
+  circleOfBalls[2].includeBall(2, balls[8]);
+  //magenta
+  circleOfBalls[2].includeBall(3, balls[27]);
+  circleOfBalls[2].includeBall(4, balls[29]);
+  circleOfBalls[2].includeBall(5, balls[32]);
+  //cyan
+  circleOfBalls[2].includeBall(6, balls[39]);
+  circleOfBalls[2].includeBall(7, balls[37]);
+  circleOfBalls[2].includeBall(8, balls[36]);
+  //orange
+  circleOfBalls[2].includeBall(9, balls[24]);
+  circleOfBalls[2].includeBall(10, balls[21]);
+  circleOfBalls[2].includeBall(11, balls[18]);
+  
+  circleOfBalls[3] = new CircleBalls(450, "left");
+  //emerald
+  circleOfBalls[3].includeBall(0, balls[0]);
+  circleOfBalls[3].includeBall(1, balls[1]);
+  circleOfBalls[3].includeBall(2, balls[2]);
+  //ice
+  circleOfBalls[3].includeBall(3, balls[9]);
+  circleOfBalls[3].includeBall(4, balls[11]);
+  circleOfBalls[3].includeBall(5, balls[14]);
+  //cyan
+  circleOfBalls[3].includeBall(6, balls[36]);
+  circleOfBalls[3].includeBall(7, balls[38]);
+  circleOfBalls[3].includeBall(8, balls[41]);
+  //gold
+  circleOfBalls[3].includeBall(9, balls[50]);
+  circleOfBalls[3].includeBall(10, balls[52]);
+  circleOfBalls[3].includeBall(11, balls[53]);
 }
 
 void draw() {
@@ -134,14 +189,17 @@ class Circles {
   float internalR;
   float middleR;
   float externalR;
+  
+  String position;
 
-  Circles(float x, float y, float i, float m, float e) {
+  Circles(float x, float y, float i, float m, float e, String p) {
     centerX = x;
     centerY= y;
 
     internalR = i;
     middleR = m;
     externalR = e;
+    position = p;
   }
 
   void display() {
@@ -154,7 +212,7 @@ class Circles {
     strokeWeight(10);
     fill(color(200, 0));
     stroke(200, 50);
-    float r;
+    float r = 0;
     if (dist(centerX, centerY, mouseX, mouseY) >= (internalR-thick)/2 && dist(centerX, centerY, mouseX, mouseY) <= (internalR+thick)/2) {
       circle(centerX, centerY, internalR);
       ballLight(centerX, centerY, internalR/2);
@@ -172,21 +230,35 @@ class Circles {
       //this.drawBottom(mouseX, mouseY, externalR/2);
     }
     strokeWeight(1);
-    
-    if (startAction != null && endAction != null){
+
+    if (startAction != null && endAction != null && r!= 0) {
       println("temos uma ação");
       boolean up = false;
       boolean right =false;
-      if (endAction.x - startAction.x > 0 ){
+      if (endAction.x - startAction.x > 0 ) {
         right = true;
       }
-      if (endAction.y- startAction.y < 0 ){
+      if (endAction.y- startAction.y < 0 ) {
         up = true;
       }
       
+      int circle=0;
+      
+      for (int i=0; i<circleOfBalls.length; i++){
+        println(i);
+        if (circleOfBalls[i].r/2 == r && circleOfBalls[i].p == position){
+          circle = i;
+          break;
+        } 
+      }
+
       if (startAction.x > centerX && startAction.y > centerY) {
-        if (!right){
-          circleOfBalls[0].move(true);
+        if (!right) {
+          circleOfBalls[circle].move(true);
+          println("horário");
+        } else {
+          println("anti-horário");
+          circleOfBalls[circle].move(false);
         }
       }
       startAction = null;
@@ -201,28 +273,28 @@ class Circles {
       }
     }
   }
-/*  void drawBottom(float x, float y, float r) {
-    float angle, a, b;
-    a = x-centerX;
-    b= y-centerY;
-    if (a ==0 ) {
-      angle = 0;
-    } else if (b==0) {
-      angle = HALF_PI;
-    } else {
-      angle = acos((a*a + r*r- b*b)/ (2*a*r));
-    }
-    
-    if (b<0){
-     // angle+=PI;
-    }
-    if (a<0){
-     // angle+=HALF_PI;
-    }
-    println(a, b, r, degrees(angle));
-    arc(x, y, 30, 20, angle, PI);
-    //  rotate(-angle);
-  }*/
+  /*  void drawBottom(float x, float y, float r) {
+   float angle, a, b;
+   a = x-centerX;
+   b= y-centerY;
+   if (a ==0 ) {
+   angle = 0;
+   } else if (b==0) {
+   angle = HALF_PI;
+   } else {
+   angle = acos((a*a + r*r- b*b)/ (2*a*r));
+   }
+   
+   if (b<0){
+   // angle+=PI;
+   }
+   if (a<0){
+   // angle+=HALF_PI;
+   }
+   println(a, b, r, degrees(angle));
+   arc(x, y, 30, 20, angle, PI);
+   //  rotate(-angle);
+   }*/
 }
 
 class Ball {
@@ -294,35 +366,54 @@ class Button {
   }
 }
 
-class CircleBalls{
-   Ball []balls;
-   
-   CircleBalls(){
-     balls = new Ball[12];
-   }
-   
-   void includeBall(int i, Ball b){
-     balls[i] = b;
-   }
-   
-   void move(boolean clock){
-     float tempX = balls[0].xCenter;
-     float tempY = balls[0].yCenter;
-     
-     for (int i = 0; i<8; i++){
-       balls[i].xCenter = balls[i+1].xCenter;
-       balls[i].yCenter = balls[i+1].yCenter;
-     }
-     
-     balls[8].xCenter =tempX;
-     balls[8].yCenter = tempY;
-   }
+class CircleBalls {
+  Ball []balls;
+  float r;
+  String p;
+
+  CircleBalls(float radius, String position) {
+    balls = new Ball[12];
+    r = radius;
+    p = position;
+  }
+
+  void includeBall(int i, Ball b) {
+    balls[i] = b;
+  }
+
+  void move(boolean clock) {
+    float tempX ;
+    float tempY = balls[0].yCenter;
+    if (clock) {
+      tempX = balls[11].xCenter;
+      tempY = balls[11].yCenter;
+      for (int i = 11; i>0; i--) {
+        balls[i].xCenter = balls[i-1].xCenter;
+        balls[i].yCenter = balls[i-1].yCenter;
+      }
+
+      balls[0].xCenter =tempX;
+      balls[0].yCenter = tempY;
+    } else {
+      tempX = balls[0].xCenter;
+      tempY = balls[0].yCenter;
+
+      for (int i = 0; i<11; i++) {
+        balls[i].xCenter = balls[i+1].xCenter;
+        balls[i].yCenter = balls[i+1].yCenter;
+      }
+
+      balls[11].xCenter =tempX;
+      balls[11].yCenter = tempY;
+      ;
+    }
+  }
 }
 
-void mousePressed(){
+void mousePressed() {
   startAction = new Point(mouseX, mouseY);
 }
 
-void mouseReleased(){
+void mouseReleased() {
   endAction = new Point(mouseX, mouseY);
 }
