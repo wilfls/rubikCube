@@ -6,6 +6,19 @@ final color orange = color(211, 84, 0);
 final color ice = color(163, 160, 239);
 final int thick = 8;
 
+final float xUp =  400;
+final float yUp = 311.4359;
+
+final float xLeft = 320 ;
+final float yLeft = 450;
+
+final float xRight = 480;
+final float yRight = 450;
+
+
+final float xStart = 700;
+final float yStart = 311.4359;
+
 final Point faceA[] = new Point[9];
 //up external + left external
 final Point faceA_0 =new  Point(177.87709, 275.56936);
