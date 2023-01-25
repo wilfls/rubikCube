@@ -88,7 +88,6 @@ void setup() {
     count++;
   }
 
-  //balls[0].changeCenter(400, 311.4359);
   count=0;
   for (int i =0; i<9; i++) {
     if (count<3) {
@@ -102,6 +101,7 @@ void setup() {
     count++;
   }
 
+  count=0;
   for (int i =0; i<9; i++) {
     if (count<3) {
       balls[i+18] = new Ball(faceC[i].x, faceC[i].y, orange, 300);
@@ -114,7 +114,7 @@ void setup() {
     count++;
   }
 
-count =0;
+  count =0;
   for (int i =0; i<9; i++) {
     if (count<3) {
       balls[i+27] = new Ball(faceD[i].x, faceD[i].y, magenta, 300);
@@ -126,8 +126,8 @@ count =0;
     balls[i+9].changeCenter(xRight, yRight);
     count++;
   }
-  
-count =0;
+
+  count =0;
   for (int i =0; i<9; i++) {
     if (count<3) {
       balls[i+36] = new Ball(faceE[i].x, faceE[i].y, cyan, 300);
@@ -139,7 +139,8 @@ count =0;
     balls[i+9].changeCenter(xUp, yUp);
     count++;
   }
-
+  
+  count=0;
   for (int i =0; i<9; i++) {
     if (count<3) {
       balls[i+45] = new Ball(faceF[i].x, faceF[i].y, gold, 300);
@@ -169,6 +170,19 @@ count =0;
   circleOfBalls[0].includeBall(9, balls[26]);
   circleOfBalls[0].includeBall(10, balls[23]);
   circleOfBalls[0].includeBall(11, balls[20]);
+  
+  balls[0].belongToCircle[0]=0;
+  balls[3].belongToCircle[0]=0;
+  balls[6].belongToCircle[0]=0;
+  balls[30].belongToCircle[0]=0;
+  balls[33].belongToCircle[0]=0;
+  balls[35].belongToCircle[0]=0;
+  balls[44].belongToCircle[0]=0;
+  balls[43].belongToCircle[0]=0;
+  balls[41].belongToCircle[0]=0;
+  balls[26].belongToCircle[0]=0;
+  balls[23].belongToCircle[0]=0;
+  balls[20].belongToCircle[0]=0;
 
   circleOfBalls[1] = new CircleBalls(375, "up");
   //emerald
@@ -187,6 +201,19 @@ count =0;
   circleOfBalls[1].includeBall(9, balls[25]);
   circleOfBalls[1].includeBall(10, balls[22]);
   circleOfBalls[1].includeBall(11, balls[19]);
+  
+  balls[1].belongToCircle[0]=1;
+  balls[4].belongToCircle[0]=1;
+  balls[7].belongToCircle[0]=1;
+  balls[28].belongToCircle[0]=1;
+  balls[31].belongToCircle[0]=1;
+  balls[34].belongToCircle[0]=1;
+  balls[42].belongToCircle[0]=1;
+  balls[40].belongToCircle[0]=1;
+  balls[38].belongToCircle[0]=1;
+  balls[25].belongToCircle[0]=1;
+  balls[22].belongToCircle[0]=1;
+  balls[19].belongToCircle[0]=1;
 
   circleOfBalls[2] = new CircleBalls(300, "up");
   //emerald
@@ -205,6 +232,19 @@ count =0;
   circleOfBalls[2].includeBall(9, balls[24]);
   circleOfBalls[2].includeBall(10, balls[21]);
   circleOfBalls[2].includeBall(11, balls[18]);
+  
+  balls[2].belongToCircle[0]=2;
+  balls[5].belongToCircle[0]=2;
+  balls[8].belongToCircle[0]=2;
+  balls[27].belongToCircle[0]=2;
+  balls[29].belongToCircle[0]=2;
+  balls[32].belongToCircle[0]=2;
+  balls[39].belongToCircle[0]=2;
+  balls[37].belongToCircle[0]=2;
+  balls[36].belongToCircle[0]=2;
+  balls[24].belongToCircle[0]=2;
+  balls[21].belongToCircle[0]=2;
+  balls[18].belongToCircle[0]=2;
 
   circleOfBalls[3] = new CircleBalls(450, "left");
   //emerald
@@ -219,10 +259,139 @@ count =0;
   circleOfBalls[3].includeBall(6, balls[36]);
   circleOfBalls[3].includeBall(7, balls[38]);
   circleOfBalls[3].includeBall(8, balls[41]);
-  //gold
+  //gold 45
   circleOfBalls[3].includeBall(9, balls[50]);
   circleOfBalls[3].includeBall(10, balls[52]);
   circleOfBalls[3].includeBall(11, balls[53]);
+  
+  balls[0].belongToCircle[1]=3;
+  balls[1].belongToCircle[1]=3;
+  balls[2].belongToCircle[1]=3;
+  balls[9].belongToCircle[0]=3;
+  balls[11].belongToCircle[0]=3;
+  balls[14].belongToCircle[0]=3;
+  balls[36].belongToCircle[1]=3;
+  balls[38].belongToCircle[1]=3;
+  balls[41].belongToCircle[1]=3;
+  balls[50].belongToCircle[0]=3;
+  balls[52].belongToCircle[0]=3;
+  balls[53].belongToCircle[0]=3;
+  
+  circleOfBalls[4] = new CircleBalls(375, "left");
+  //emerald
+  circleOfBalls[4].includeBall(0, balls[3]);
+  circleOfBalls[4].includeBall(1, balls[4]);
+  circleOfBalls[4].includeBall(2, balls[5]);
+  //ice
+  circleOfBalls[4].includeBall(3, balls[10]);
+  circleOfBalls[4].includeBall(4, balls[13]);
+  circleOfBalls[4].includeBall(5, balls[16]);
+  //cyan 36
+  circleOfBalls[4].includeBall(6, balls[37]);
+  circleOfBalls[4].includeBall(7, balls[40]);
+  circleOfBalls[4].includeBall(8, balls[43]);
+  //gold
+  circleOfBalls[4].includeBall(9, balls[47]);
+  circleOfBalls[4].includeBall(10, balls[49]);
+  circleOfBalls[4].includeBall(11, balls[51]);
+  
+  balls[3].belongToCircle[1]=4;
+  balls[4].belongToCircle[1]=4;
+  balls[5].belongToCircle[1]=4;
+  balls[10].belongToCircle[0]=4;
+  balls[13].belongToCircle[0]=4;
+  balls[16].belongToCircle[0]=4;
+  balls[37].belongToCircle[1]=4;
+  balls[40].belongToCircle[1]=4;
+  balls[43].belongToCircle[1]=4;
+  balls[47].belongToCircle[0]=4;
+  balls[49].belongToCircle[0]=4;
+  balls[51].belongToCircle[0]=4;
+  
+  circleOfBalls[5] = new CircleBalls(300, "left");
+  //emerald
+  circleOfBalls[5].includeBall(0, balls[6]);
+  circleOfBalls[5].includeBall(1, balls[7]);
+  circleOfBalls[5].includeBall(2, balls[8]);
+  //ice
+  circleOfBalls[5].includeBall(3, balls[12]);
+  circleOfBalls[5].includeBall(4, balls[15]);
+  circleOfBalls[5].includeBall(5, balls[17]);
+  //cyan 36
+  circleOfBalls[5].includeBall(6, balls[39]);
+  circleOfBalls[5].includeBall(7, balls[42]);
+  circleOfBalls[5].includeBall(8, balls[44]);
+  //gold
+  circleOfBalls[5].includeBall(9, balls[45]);
+  circleOfBalls[5].includeBall(10, balls[46]);
+  circleOfBalls[5].includeBall(11, balls[48]);
+  
+  balls[6].belongToCircle[1]=5;
+  balls[7].belongToCircle[1]=5;
+  balls[8].belongToCircle[1]=5;
+  balls[12].belongToCircle[0]=5;
+  balls[15].belongToCircle[0]=5;
+  balls[17].belongToCircle[0]=5;
+  balls[39].belongToCircle[1]=5;
+  balls[42].belongToCircle[1]=5;
+  balls[44].belongToCircle[1]=5;
+  balls[45].belongToCircle[0]=5;
+  balls[46].belongToCircle[0]=5;
+  balls[58].belongToCircle[0]=5;
+  
+  circleOfBalls[6] = new CircleBalls(450, "right");
+  //ice 9
+  circleOfBalls[6].includeBall(0, balls[12]);
+  circleOfBalls[6].includeBall(1, balls[10]);
+  circleOfBalls[6].includeBall(2, balls[9]);
+  //orange 18
+  circleOfBalls[6].includeBall(3, balls[18]);
+  circleOfBalls[6].includeBall(4, balls[19]);
+  circleOfBalls[6].includeBall(5, balls[20]);
+  //gold 45
+  circleOfBalls[6].includeBall(6, balls[53]);
+  circleOfBalls[6].includeBall(7, balls[51]);
+  circleOfBalls[6].includeBall(8, balls[48]);
+  //magenta 27
+  circleOfBalls[6].includeBall(9, balls[30]);
+  circleOfBalls[6].includeBall(10, balls[28]);
+  circleOfBalls[6].includeBall(11, balls[27]);
+  
+  circleOfBalls[7] = new CircleBalls(375, "right");
+  //ice 9
+  circleOfBalls[7].includeBall(0, balls[15]);
+  circleOfBalls[7].includeBall(1, balls[13]);
+  circleOfBalls[7].includeBall(2, balls[11]);
+  //orange 18
+  circleOfBalls[7].includeBall(3, balls[21]);
+  circleOfBalls[7].includeBall(4, balls[22]);
+  circleOfBalls[7].includeBall(5, balls[23]);
+  //gold 45
+  circleOfBalls[7].includeBall(6, balls[52]);
+  circleOfBalls[7].includeBall(7, balls[49]);
+  circleOfBalls[7].includeBall(8, balls[46]);
+  //magenta 27
+  circleOfBalls[7].includeBall(9, balls[33]);
+  circleOfBalls[7].includeBall(10, balls[31]);
+  circleOfBalls[7].includeBall(11, balls[29]);
+  
+  circleOfBalls[8] = new CircleBalls(300, "right");
+  //ice 9
+  circleOfBalls[8].includeBall(0, balls[17]);
+  circleOfBalls[8].includeBall(1, balls[16]);
+  circleOfBalls[8].includeBall(2, balls[14]);
+  //orange 18
+  circleOfBalls[8].includeBall(3, balls[24]);
+  circleOfBalls[8].includeBall(4, balls[25]);
+  circleOfBalls[8].includeBall(5, balls[26]);
+  //gold 45
+  circleOfBalls[8].includeBall(6, balls[50]);
+  circleOfBalls[8].includeBall(7, balls[47]);
+  circleOfBalls[8].includeBall(8, balls[45]);
+  //magenta 27
+  circleOfBalls[8].includeBall(9, balls[35]);
+  circleOfBalls[8].includeBall(10, balls[34]);
+  circleOfBalls[8].includeBall(11, balls[32]);
 }
 
 void draw() {
@@ -280,7 +449,6 @@ class Circles {
       circle(centerX, centerY, externalR);
       ballLight(centerX, centerY, externalR/2);
       r = externalR/2;
-      //this.drawBottom(mouseX, mouseY, externalR/2);
     }
     strokeWeight(1);
 
@@ -313,7 +481,7 @@ class Circles {
           println("anti-horário");
           circleOfBalls[circle].move(false);
         }
-      }else if (startAction.x < centerX && startAction.y > centerY) {
+      } else if (startAction.x < centerX && startAction.y > centerY) {
         if (!right) {
           circleOfBalls[circle].move(true);
           println("horário");
@@ -321,7 +489,7 @@ class Circles {
           println("anti-horário");
           circleOfBalls[circle].move(false);
         }
-      }else if (startAction.x > centerX && startAction.y < centerY) {
+      } else if (startAction.x > centerX && startAction.y < centerY) {
         if (right) {
           circleOfBalls[circle].move(true);
           println("horário");
@@ -329,7 +497,7 @@ class Circles {
           println("anti-horário");
           circleOfBalls[circle].move(false);
         }
-      }else if (startAction.x < centerX && startAction.y < centerY) {
+      } else if (startAction.x < centerX && startAction.y < centerY) {
         if (right) {
           circleOfBalls[circle].move(true);
           println("horário");
@@ -381,17 +549,11 @@ class Ball {
   float angle;
   float velocity;
   color c;
-
-  Ball up;
-  Ball down;
-  Ball left;
-  Ball right;
-
-  String horiz; //horizontal
-  String vert; // vertical
-
+  
   float xCircle;
   float yCircle;
+  
+  int []belongToCircle;
 
   Ball(float xPosition, float yPosition, color col, float r) {
     xCenter = xPosition;
@@ -402,6 +564,8 @@ class Ball {
     velocity=0.01;
     angle=0;
     radius = r;
+    
+    belongToCircle = new int[2];
   }
 
   void display() {
@@ -409,18 +573,18 @@ class Ball {
     float x = xCenter + cos(angle)*radius;
     float y = yCenter + sin(angle)*radius;
 
-   // float x = xCircle + cos(angle)*radius;
-   // float y = yCircle + sin(angle)*radius;
+    // float x = xCircle + cos(angle)*radius;
+    // float y = yCircle + sin(angle)*radius;
 
 
     fill(c, 150);
     circle(x, y, 12);
-/*
+    /*
     angle+=velocity;
- 
-    if (x >= xCenter-10 &&  x <= xCenter+10 && y >= yCenter-10 && y <= yCenter+10 ) {
-      velocity = 0;
-    }*/
+     
+     if (x >= xCenter-10 &&  x <= xCenter+10 && y >= yCenter-10 && y <= yCenter+10 ) {
+     velocity = 0;
+     }*/
 
     //println(angle, xCenter, yCenter);
   }
@@ -458,31 +622,6 @@ class Point {
   }
 }
 
-class Button {
-  float centerX;
-  float centerY;
-  float angle;
-
-  void Button(float x, float y, float a) {
-    centerX = x;
-    centerY = y;
-    angle = a;
-  }
-
-  void display() {
-    arc(centerX, centerY, 30, 20, angle, PI+angle);
-  }
-
-  void drawBottom(float x, float y) {
-    PVector center = new PVector(centerX, centerY);
-    PVector mouse = new PVector(x, y);
-    float angle = PVector.angleBetween(center, mouse);
-    //  rotate(angle);
-    ellipse(x, y, 30, 10);
-    //  rotate(-angle);
-  }
-}
-
 class CircleBalls {
   Ball []balls;
   float r;
@@ -499,8 +638,8 @@ class CircleBalls {
   }
 
   void move(boolean clock) {
-    float tempX ;
-    float tempY = balls[0].yCenter;
+    float tempX;
+    float tempY;
     if (clock) {
       tempX = balls[11].xCenter;
       tempY = balls[11].yCenter;
@@ -509,7 +648,7 @@ class CircleBalls {
         balls[i].yCenter = balls[i-1].yCenter;
       }
 
-      balls[0].xCenter =tempX;
+      balls[0].xCenter = tempX;
       balls[0].yCenter = tempY;
     } else {
       tempX = balls[0].xCenter;

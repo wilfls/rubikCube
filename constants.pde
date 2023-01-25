@@ -15,7 +15,6 @@ final float yLeft = 450;
 final float xRight = 480;
 final float yRight = 450;
 
-
 final float xStart = 700;
 final float yStart = 311.4359;
 
