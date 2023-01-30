@@ -6,6 +6,9 @@ CircleBalls []circleOfBalls;
 Point startAction;
 Point endAction;
 
+float angle;
+float radius;
+
 void setup() {
   size(800, 800);
   up = new Circles(400, 311.4359, 300, 375, 450, "up");
@@ -78,11 +81,11 @@ void setup() {
   int count=0;
   for (int i =0; i<9; i++) {
     if (count<3) {
-      balls[i] = new Ball(faceA[i].x, faceA[i].y, emerald, 300/2);
+      balls[i] = new Ball(faceA[i].x, faceA[i].y, emerald, 300);
     } else if (count <6) {
-      balls[i] = new Ball(faceA[i].x, faceA[i].y, emerald, 375/2);
+      balls[i] = new Ball(faceA[i].x, faceA[i].y, emerald, 375);
     } else {
-      balls[i] = new Ball(faceA[i].x, faceA[i].y, emerald, 450/2);
+      balls[i] = new Ball(faceA[i].x, faceA[i].y, emerald, 450);
     }
     balls[i].changeCenter(xLeft, yLeft);
     count++;
@@ -91,11 +94,11 @@ void setup() {
   count=0;
   for (int i =0; i<9; i++) {
     if (count<3) {
-      balls[i+9] = new Ball(faceB[i].x, faceB[i].y, ice, 300/2);
+      balls[i+9] = new Ball(faceB[i].x, faceB[i].y, ice, 300);
     } else if (count <6) {
-      balls[i+9] = new Ball(faceB[i].x, faceB[i].y, ice, 375/2);
+      balls[i+9] = new Ball(faceB[i].x, faceB[i].y, ice, 375);
     } else {
-      balls[i+9] = new Ball(faceB[i].x, faceB[i].y, ice, 450/2);
+      balls[i+9] = new Ball(faceB[i].x, faceB[i].y, ice, 450);
     }
     balls[i+9].changeCenter(xLeft, yLeft);
     count++;
@@ -110,7 +113,7 @@ void setup() {
     } else {
       balls[i+18] = new Ball(faceC[i].x, faceC[i].y, orange, 450);
     }
-    balls[i+9].changeCenter(xUp, yUp);
+    balls[i+18].changeCenter(xUp, yUp);
     count++;
   }
 
@@ -123,7 +126,7 @@ void setup() {
     } else {
       balls[i+27] = new Ball(faceD[i].x, faceD[i].y, magenta, 450);
     }
-    balls[i+9].changeCenter(xRight, yRight);
+    balls[i+27].changeCenter(xRight, yRight);
     count++;
   }
 
@@ -136,10 +139,10 @@ void setup() {
     } else {
       balls[i+36] = new Ball(faceE[i].x, faceE[i].y, cyan, 450);
     }
-    balls[i+9].changeCenter(xUp, yUp);
+    balls[i+36].changeCenter(xUp, yUp);
     count++;
   }
-  
+
   count=0;
   for (int i =0; i<9; i++) {
     if (count<3) {
@@ -149,7 +152,7 @@ void setup() {
     } else {
       balls[i+45] = new Ball(faceF[i].x, faceF[i].y, gold, 450);
     }
-    balls[i+9].changeCenter(xRight, yRight);
+    balls[i+45].changeCenter(xRight, yRight);
     count++;
   }
 
@@ -170,7 +173,7 @@ void setup() {
   circleOfBalls[0].includeBall(9, balls[26]);
   circleOfBalls[0].includeBall(10, balls[23]);
   circleOfBalls[0].includeBall(11, balls[20]);
-  
+
   balls[0].belongToCircle[0]=0;
   balls[3].belongToCircle[0]=0;
   balls[6].belongToCircle[0]=0;
@@ -201,7 +204,7 @@ void setup() {
   circleOfBalls[1].includeBall(9, balls[25]);
   circleOfBalls[1].includeBall(10, balls[22]);
   circleOfBalls[1].includeBall(11, balls[19]);
-  
+
   balls[1].belongToCircle[0]=1;
   balls[4].belongToCircle[0]=1;
   balls[7].belongToCircle[0]=1;
@@ -232,7 +235,7 @@ void setup() {
   circleOfBalls[2].includeBall(9, balls[24]);
   circleOfBalls[2].includeBall(10, balls[21]);
   circleOfBalls[2].includeBall(11, balls[18]);
-  
+
   balls[2].belongToCircle[0]=2;
   balls[5].belongToCircle[0]=2;
   balls[8].belongToCircle[0]=2;
@@ -263,7 +266,7 @@ void setup() {
   circleOfBalls[3].includeBall(9, balls[50]);
   circleOfBalls[3].includeBall(10, balls[52]);
   circleOfBalls[3].includeBall(11, balls[53]);
-  
+
   balls[0].belongToCircle[1]=3;
   balls[1].belongToCircle[1]=3;
   balls[2].belongToCircle[1]=3;
@@ -276,7 +279,7 @@ void setup() {
   balls[50].belongToCircle[0]=3;
   balls[52].belongToCircle[0]=3;
   balls[53].belongToCircle[0]=3;
-  
+
   circleOfBalls[4] = new CircleBalls(375, "left");
   //emerald
   circleOfBalls[4].includeBall(0, balls[3]);
@@ -294,7 +297,7 @@ void setup() {
   circleOfBalls[4].includeBall(9, balls[47]);
   circleOfBalls[4].includeBall(10, balls[49]);
   circleOfBalls[4].includeBall(11, balls[51]);
-  
+
   balls[3].belongToCircle[1]=4;
   balls[4].belongToCircle[1]=4;
   balls[5].belongToCircle[1]=4;
@@ -307,7 +310,7 @@ void setup() {
   balls[47].belongToCircle[0]=4;
   balls[49].belongToCircle[0]=4;
   balls[51].belongToCircle[0]=4;
-  
+
   circleOfBalls[5] = new CircleBalls(300, "left");
   //emerald
   circleOfBalls[5].includeBall(0, balls[6]);
@@ -325,7 +328,7 @@ void setup() {
   circleOfBalls[5].includeBall(9, balls[45]);
   circleOfBalls[5].includeBall(10, balls[46]);
   circleOfBalls[5].includeBall(11, balls[48]);
-  
+
   balls[6].belongToCircle[1]=5;
   balls[7].belongToCircle[1]=5;
   balls[8].belongToCircle[1]=5;
@@ -337,8 +340,8 @@ void setup() {
   balls[44].belongToCircle[1]=5;
   balls[45].belongToCircle[0]=5;
   balls[46].belongToCircle[0]=5;
-  balls[58].belongToCircle[0]=5;
-  
+  balls[48].belongToCircle[0]=5;
+
   circleOfBalls[6] = new CircleBalls(450, "right");
   //ice 9
   circleOfBalls[6].includeBall(0, balls[12]);
@@ -356,7 +359,7 @@ void setup() {
   circleOfBalls[6].includeBall(9, balls[30]);
   circleOfBalls[6].includeBall(10, balls[28]);
   circleOfBalls[6].includeBall(11, balls[27]);
-  
+
   circleOfBalls[7] = new CircleBalls(375, "right");
   //ice 9
   circleOfBalls[7].includeBall(0, balls[15]);
@@ -374,7 +377,7 @@ void setup() {
   circleOfBalls[7].includeBall(9, balls[33]);
   circleOfBalls[7].includeBall(10, balls[31]);
   circleOfBalls[7].includeBall(11, balls[29]);
-  
+
   circleOfBalls[8] = new CircleBalls(300, "right");
   //ice 9
   circleOfBalls[8].includeBall(0, balls[17]);
@@ -392,6 +395,7 @@ void setup() {
   circleOfBalls[8].includeBall(9, balls[35]);
   circleOfBalls[8].includeBall(10, balls[34]);
   circleOfBalls[8].includeBall(11, balls[32]);
+  radius = 300/2;
 }
 
 void draw() {
@@ -402,6 +406,21 @@ void draw() {
   for (int i = 0; i< balls.length; i++) {
     balls[i].display();
   }
+
+  fill(color(250, 250, 150), 100);
+  circle(xUp, yUp, 10);
+
+  circle(xUp+radius, yUp, 10);
+  line(xUp, yUp, xUp+radius, yUp);
+  
+  angle = Angle(faceC_0.x, faceC_0.y, xUp, yUp, 300/2);
+
+  float x = xUp + cos(angle)*radius;
+  float y = yUp + sin(angle)*radius;
+  circle(x, y, 10);
+  line(xUp, yUp, x, y);
+
+  println(degrees(angle));
 }
 
 class Circles {
@@ -542,75 +561,7 @@ class Circles {
    }*/
 }
 
-class Ball {
-  float xCenter;
-  float yCenter;
-  float radius;
-  float angle;
-  float velocity;
-  color c;
-  
-  float xCircle;
-  float yCircle;
-  
-  int []belongToCircle;
 
-  Ball(float xPosition, float yPosition, color col, float r) {
-    xCenter = xPosition;
-    yCenter= yPosition;
-
-    c = col;
-
-    velocity=0.01;
-    angle=0;
-    radius = r;
-    
-    belongToCircle = new int[2];
-  }
-
-  void display() {
-    radius = 0;
-    float x = xCenter + cos(angle)*radius;
-    float y = yCenter + sin(angle)*radius;
-
-    // float x = xCircle + cos(angle)*radius;
-    // float y = yCircle + sin(angle)*radius;
-
-
-    fill(c, 150);
-    circle(x, y, 12);
-    /*
-    angle+=velocity;
-     
-     if (x >= xCenter-10 &&  x <= xCenter+10 && y >= yCenter-10 && y <= yCenter+10 ) {
-     velocity = 0;
-     }*/
-
-    //println(angle, xCenter, yCenter);
-  }
-
-  void glow() {
-    noStroke();
-    fill(c, 100);
-    circle(xCenter, yCenter, 20);
-  }
-
-  void changeCenter(float x, float y) {
-    xCircle = x;
-    yCircle = y;
-
-    // float xLine= xStart-xCircle;
-    //float yLine= yStart-yCircle;
-
-    //float xRelative = xCenter- xCircle;
-    //float yRelative = yCenter - yCircle;
-
-    // angle =2*PI- acos(((xLine*xRelative)+(yLine*yRelative))/( sqrt(pow(xLine, 2)+ pow(yLine, 2))*sqrt(pow(xRelative, 2)+pow(yRelative, 2))));
-
-    //   angle = acos((xStart*xCenter+yStart*yCenter)/( sqrt(pow(xStart,2)+ pow(yStart, 2))*sqrt(pow(xCenter,2)+pow(yCenter,2))));
-    // println(degrees(angle), xLine, yLine, xRelative, yRelative);
-  }
-}
 
 class Point {
   float x;
@@ -672,4 +623,21 @@ void mousePressed() {
 
 void mouseReleased() {
   endAction = new Point(mouseX, mouseY);
+}
+
+float Angle(float x, float y, float xCenter, float yCenter, float r){
+  float angle;
+  // beta = acos( ( a^2 + b^2 - c^2 ) / (2ab) )
+  
+  float c;
+  c = dist(x, y, xCenter+r, yCenter);
+ // println(c);
+  
+  angle = acos((pow(r,2)+pow(r,2)- pow(c, 2))/ (2*r*r) );
+  
+  if (y<yCenter){
+    angle = 2*PI- angle;
+  
+  }
+  return angle;
 }
