@@ -78,83 +78,76 @@ void setup() {
   faceF[8] = faceF_8;
 
   balls = new Ball[54];
-  int count=0;
   for (int i =0; i<9; i++) {
-    if (count<3) {
-      balls[i] = new Ball(faceA[i].x, faceA[i].y, emerald, 300);
-    } else if (count <6) {
+    if (i<3) {
+      balls[i] = new Ball(faceA[i].x, faceA[i].y, emerald, 450);
+    } else if (i <6) {
       balls[i] = new Ball(faceA[i].x, faceA[i].y, emerald, 375);
     } else {
-      balls[i] = new Ball(faceA[i].x, faceA[i].y, emerald, 450);
+      balls[i] = new Ball(faceA[i].x, faceA[i].y, emerald, 300);
     }
     balls[i].changeCenter(xLeft, yLeft);
-    count++;
+
+    //   println(balls[i].x, balls[i].y, balls[i].angle, balls[i].xCircle, balls[i].yCircle, balls[i].radius);
   }
 
-  count=0;
+
   for (int i =0; i<9; i++) {
-    if (count<3) {
-      balls[i+9] = new Ball(faceB[i].x, faceB[i].y, ice, 300);
-    } else if (count <6) {
+    if (i<3) {
+      balls[i+9] = new Ball(faceB[i].x, faceB[i].y, ice, 450);
+    } else if (i <6) {
       balls[i+9] = new Ball(faceB[i].x, faceB[i].y, ice, 375);
     } else {
-      balls[i+9] = new Ball(faceB[i].x, faceB[i].y, ice, 450);
+      balls[i+9] = new Ball(faceB[i].x, faceB[i].y, ice, 300);
     }
     balls[i+9].changeCenter(xLeft, yLeft);
-    count++;
   }
 
-  count=0;
   for (int i =0; i<9; i++) {
-    if (count<3) {
+    if (i%3==0) {
       balls[i+18] = new Ball(faceC[i].x, faceC[i].y, orange, 300);
-    } else if (count <6) {
+    } else if (i%3==1) {
       balls[i+18] = new Ball(faceC[i].x, faceC[i].y, orange, 375);
     } else {
       balls[i+18] = new Ball(faceC[i].x, faceC[i].y, orange, 450);
     }
     balls[i+18].changeCenter(xUp, yUp);
-    count++;
   }
 
-  count =0;
   for (int i =0; i<9; i++) {
-    if (count<3) {
-      balls[i+27] = new Ball(faceD[i].x, faceD[i].y, magenta, 300);
-    } else if (count <6) {
+    if (i== 0 || i== 1 || i==3) {
+      balls[i+27] = new Ball(faceD[i].x, faceD[i].y, magenta, 450);
+    } else if (i== 2 || i== 4 || i==6) {
       balls[i+27] = new Ball(faceD[i].x, faceD[i].y, magenta, 375);
     } else {
-      balls[i+27] = new Ball(faceD[i].x, faceD[i].y, magenta, 450);
+      balls[i+27] = new Ball(faceD[i].x, faceD[i].y, magenta, 300);
     }
     balls[i+27].changeCenter(xRight, yRight);
-    count++;
   }
 
-  count =0;
   for (int i =0; i<9; i++) {
-    if (count<3) {
+    if (i== 0 || i== 1 || i==3) {
       balls[i+36] = new Ball(faceE[i].x, faceE[i].y, cyan, 300);
-    } else if (count <6) {
+    } else if (i== 2 || i== 4 || i==6) {
       balls[i+36] = new Ball(faceE[i].x, faceE[i].y, cyan, 375);
     } else {
       balls[i+36] = new Ball(faceE[i].x, faceE[i].y, cyan, 450);
     }
     balls[i+36].changeCenter(xUp, yUp);
-    count++;
   }
 
-  count=0;
   for (int i =0; i<9; i++) {
-    if (count<3) {
+    if (i== 0 || i== 2 || i==5) {
       balls[i+45] = new Ball(faceF[i].x, faceF[i].y, gold, 300);
-    } else if (count <6) {
+    } else if (i== 1|| i== 4 || i==7) {
       balls[i+45] = new Ball(faceF[i].x, faceF[i].y, gold, 375);
     } else {
       balls[i+45] = new Ball(faceF[i].x, faceF[i].y, gold, 450);
     }
     balls[i+45].changeCenter(xRight, yRight);
-    count++;
   }
+
+
 
   circleOfBalls[0] = new CircleBalls(450, "up");
   //emerald
@@ -395,6 +388,7 @@ void setup() {
   circleOfBalls[8].includeBall(9, balls[35]);
   circleOfBalls[8].includeBall(10, balls[34]);
   circleOfBalls[8].includeBall(11, balls[32]);
+
   radius = 300/2;
 }
 
@@ -408,19 +402,17 @@ void draw() {
   }
 
   fill(color(250, 250, 150), 100);
-  circle(xUp, yUp, 10);
+  circle(xLeft, yLeft, 10);
 
-  circle(xUp+radius, yUp, 10);
-  line(xUp, yUp, xUp+radius, yUp);
-  
-  angle = Angle(faceC_0.x, faceC_0.y, xUp, yUp, 300/2);
+  circle(xLeft+radius, yLeft, 10);
+  line(xLeft, yLeft, xLeft+radius, yLeft);
 
-  float x = xUp + cos(angle)*radius;
-  float y = yUp + sin(angle)*radius;
+  angle = Angle(faceA_0.x, faceA_0.y, xLeft, yLeft, 450/2);
+
+  float x = xLeft + cos(angle)*450/2;
+  float y = yLeft + sin(angle)*450/2;
   circle(x, y, 10);
-  line(xUp, yUp, x, y);
-
-  println(degrees(angle));
+  line(xLeft, yLeft, x, y);
 }
 
 class Circles {
@@ -485,7 +477,6 @@ class Circles {
       int circle=0;
 
       for (int i=0; i<circleOfBalls.length; i++) {
-        println(i);
         if (circleOfBalls[i].r/2 == r && circleOfBalls[i].p == position) {
           circle = i;
           break;
@@ -532,7 +523,7 @@ class Circles {
 
   void ballLight(float x, float y, float r) {
     for (int i = 0; i< balls.length; i++) {
-      if (dist(x, y, balls[i].xCenter, balls[i].yCenter) >= r-1 && dist(x, y, balls[i].xCenter, balls[i].yCenter) <= r+1) {
+      if (dist(x, y, balls[i].x, balls[i].y) >= r-1 && dist(x, y, balls[i].x, balls[i].y) <= r+1) {
         balls[i].glow();
       }
     }
@@ -592,26 +583,29 @@ class CircleBalls {
     float tempX;
     float tempY;
     if (clock) {
-      tempX = balls[11].xCenter;
-      tempY = balls[11].yCenter;
+      tempX = balls[11].x;
+      tempY = balls[11].y;
       for (int i = 11; i>0; i--) {
-        balls[i].xCenter = balls[i-1].xCenter;
-        balls[i].yCenter = balls[i-1].yCenter;
+        balls[i].moveTo( balls[i-1].x, balls[i-1].y);
+        // balls[i].x = balls[i-1].x;
+        // balls[i].y = balls[i-1].y;
       }
-
-      balls[0].xCenter = tempX;
-      balls[0].yCenter = tempY;
+      balls[0].moveTo( tempX, tempY);
+      //  balls[0].x = tempX;
+      //  balls[0].y = tempY;
     } else {
-      tempX = balls[0].xCenter;
-      tempY = balls[0].yCenter;
+      tempX = balls[0].x;
+      tempY = balls[0].y;
 
       for (int i = 0; i<11; i++) {
-        balls[i].xCenter = balls[i+1].xCenter;
-        balls[i].yCenter = balls[i+1].yCenter;
-      }
+        balls[i].moveTo( balls[i+1].x, balls[i+1].y);
 
-      balls[11].xCenter =tempX;
-      balls[11].yCenter = tempY;
+        //   balls[i].x = balls[i+1].x;
+        //   balls[i].y = balls[i+1].y;
+      }
+      balls[11].moveTo( tempX, tempY);
+      //  balls[11].x =tempX;
+      // balls[11].y = tempY;
       ;
     }
   }
@@ -625,19 +619,19 @@ void mouseReleased() {
   endAction = new Point(mouseX, mouseY);
 }
 
-float Angle(float x, float y, float xCenter, float yCenter, float r){
+float Angle(float x, float y, float xCenter, float yCenter, float r) {
   float angle;
   // beta = acos( ( a^2 + b^2 - c^2 ) / (2ab) )
-  
+
   float c;
   c = dist(x, y, xCenter+r, yCenter);
- // println(c);
-  
-  angle = acos((pow(r,2)+pow(r,2)- pow(c, 2))/ (2*r*r) );
-  
-  if (y<yCenter){
+
+  angle = acos((pow(r, 2)+pow(r, 2)- pow(c, 2))/ (2*pow(r, 2)) );
+
+  //println("acos(", r, "²+", r, "²-", c,"²)/2*",r,"²=",angle);
+
+  if (y<yCenter) {
     angle = 2*PI- angle;
-  
   }
   return angle;
 }
