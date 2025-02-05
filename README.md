@@ -1,4 +1,4 @@
-circle equation:
+#circle equation:
 (x-a)²+(y-b)²=r²
 
 up internal + right internal 
